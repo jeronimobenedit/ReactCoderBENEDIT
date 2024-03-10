@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import NavBar from './components/NavBar.jsx';
+
+import ProductCards from './components/ProductCards.jsx';
+import Products from './models/products.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <App />
+    <NavBar />
+    <div style={{display: 'flex' }}>
+    {Products.productos.map((element) => (
+        <ProductCards key={element.Id} nombre={element.Nombre} srcImage={element.srcImage} Descripcion={element.Descripcion}/>
+    ))}
+    </div>
   </React.StrictMode>
 );
 
